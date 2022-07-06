@@ -25,6 +25,24 @@ def roman_number(limit_num):
         if counter <= limit_num:
             if len(str(int_num)) == 1:
                 unit = transformation(int_num, 1)
+                int_num += 1
+                counter += 1
+            elif len(str(int_num)) == 2:
+                unit, ten = transformation(int_num % 10, 1), transformation(int_num // 10, 10)
+                yield (ten+unit)
+                int_num += 1
+                counter += 1
+            elif len(str(int_num)) == 3:
+                hundred = transformation(int_num // 100, 100)
+                ten = transformation((int_num % 100) // 10, 10)
+                unit = transformation((int_num % 100) % 10, 1)
+                yield (hundred+ten+unit)
+                int_num += 1
+                counter += 1
+            elif len(str(int_num)) == 4:
+                yield SOME_NUMBERS[1000]
+                int_num += 1
+                counter += 1
         else:break
 
 def run():
