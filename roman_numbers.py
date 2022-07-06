@@ -47,7 +47,14 @@ def roman_number(limit_num):
 
 def run():
     limit_num = 1000
-    roman_number(limit_num)
+    try:
+        if limit_num > 1000:
+            raise ValueError("The range of this program is 1 to 1000")
+        results = roman_number(limit_num)
+        for element in results:
+            print(element)
+    except ValueError as v:
+        print(v)
 
 if __name__=='__main__':
     run()
